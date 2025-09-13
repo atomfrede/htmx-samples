@@ -8,6 +8,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class LLMChatService {
     Logger logger = LoggerFactory.getLogger(LLMChatService.class);
@@ -25,12 +27,10 @@ public class LLMChatService {
         logger.info("Received LLM Question Event");
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(faker.random().nextInt(555, 3555));
+            eventPublisher.publishEvent(new AnswerEvent(this, event.getStreamIdentifier(), faker.buffy().quotes()));
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException(e);
         }
-        eventPublisher.publishEvent(new AnswerEvent(this, event.getStreamIdentifier(), faker.buffy().quotes()));
-
     }
 }
