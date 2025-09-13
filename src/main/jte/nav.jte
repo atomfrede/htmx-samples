@@ -15,5 +15,6 @@
         <li><a href="/tables?sort=name,desc">Tables</a></li>
         <li><a href="/websockets">Websockets</a></li>
         <li><a href="modal-dialogs">Modal Dialogs</a></li>
+        <li><a href="/llm-chat">LLM Chat</a></li>
     </ul>
 </nav>

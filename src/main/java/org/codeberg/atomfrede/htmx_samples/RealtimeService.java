@@ -26,7 +26,6 @@ public class RealtimeService {
     @Scheduled(fixedRate = 5000)
     public void updateNewsFeed(){
         try {
-            System.out.println("Update news feed");
             TemplateOutput output = new StringOutput();
             templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
             websocketHolder.broadcastHtmlSnipped(output.toString());
